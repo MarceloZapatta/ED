@@ -2,12 +2,18 @@
 #include <stdlib.h>
 #define MAX 50
 
+
+Pilha* cria (void);
+void push (Pilha* p, float v);
+float pop (Pilha* p);
+int vazia (Pilha* p);
+void libera (Pilha* p);
+
 struct pilha
 {
 	int n;
 	float vet[MAX];
 };
-
 typedef struct pilha Pilha;
 
 
@@ -54,6 +60,13 @@ float pop (Pilha* p)
 	return v;
 }
 
+void imprime (Pilha* p) {
+	int i;
+	for (i=p->n-1; i>=0; i--) {
+		printf("%f\n", p->vet[i]);
+	}
+}
+
 int main()
 {
 	float ultimoElemento;
@@ -73,12 +86,12 @@ int main()
 
 	// Imprime a pilha
 	printf("Impressão da Pilha:\n");
-	for (int i = 0; i < 50; ++i)
+	for (int i = 0; i < 40; ++i)
 	{	
 		printf("Posicao %d: %.2f\n", i + 1, stack->vet[i]);
 	}
 
-	printf("\nUltimo elemento: %.2f\n", ultimoElemento);
+	printf("\nUltimo elemento removido: %.2f\n", ultimoElemento);
 
 	libera(stack);
 
